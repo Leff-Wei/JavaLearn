@@ -17,7 +17,7 @@ public class ArrayDate {
 		System.out.println ("To find Year/ month / day: " + target.year + " " + target.month + " " + target.day);		
 		
 		int result = findDate (d, target);
-		if ( result != -1)
+		if (  result != -1)
 			System.out.println ("The date is within the date array: d[" + result + "].");	
 		else 		
 			System.out.println ("NOT FOUND.");	
@@ -60,7 +60,7 @@ public class ArrayDate {
 				return;
 			}
 		}
-		System.out.println ("FFinish sorting from big to small.");		
+		System.out.println ("Finish sorting from big to small.");		
 	}
 	
 	static void printDate( Date[] d) {
@@ -81,23 +81,17 @@ public class ArrayDate {
 		// sortDateBig2Small (d);
 		printDate (d);
 		
-		int remanent = -1;
-		
 		while (end >= initial) {
-			if ( end == initial ) {  //someday.compare (d[middle]) == -1
-				remanent = end;
-				break;
-			} else if (someday.compare (d[middle]) == 1) {
+			if ( someday.compare (d[middle]) == -1 )
+				return middle;
+			if (someday.compare (d[middle]) == 1) 
 				initial = middle + 1;
-				middle = (end + initial) / 2;
-				continue;
-			} else if (someday.compare (d[middle]) == 0){
+			if (someday.compare (d[middle]) == 0)
 				end = middle - 1; 
-				middle = (end + initial) / 2;			
-				continue;
-			}
+			
+			middle = (end + initial) / 2;
 		}
-		return d[remanent].year == someday.year && d[remanent].month == someday.month && d[remanent].day == someday.day ? remanent : -1;		
+		return -1;		
 	}	
 }
 
